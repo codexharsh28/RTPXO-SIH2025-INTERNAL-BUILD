@@ -1,0 +1,27 @@
+{
+  "name": "rtp-xo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "npx tsx engine/verifyPhase2.ts && npx tsx engine/verifyPhase3.ts && npx tsx engine/verifyPhase4.ts && npx tsx engine/verifyPhase5.ts && npx tsx engine/verifyPhase6.ts && npx tsx engine/verifyPhase7.ts && npx tsx engine/verifyPhase7E.ts && npx tsx engine/verifyPhase8A.ts && npx tsx engine/verifyPhase8B.ts && npx tsx engine/verifyPhase8C.ts && npx tsx engine/verifyPhase8D.ts && npx tsx engine/verifyPhase9.ts && npx tsx engine/verifyPhase10Step2.ts && npx tsx engine/verifyPhase10Step3.ts && npx tsx engine/verifyPhase10Step4.ts && npx tsx engine/verifyPhase10Step5_2.ts && npx tsx engine/verifyPhase10Step5_3.ts"
+  },
+  "dependencies": {
+    "next": "16.3.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

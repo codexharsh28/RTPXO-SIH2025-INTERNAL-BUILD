@@ -1,0 +1,207 @@
+@import "tailwindcss";
+
+:root {
+  /* 1. BASE BACKGROUND & SURFACE PALETTE (Near-Black CTC / SCADA) */
+  --bg-base: #0B0E11;
+  --bg-panel: #11161B;
+  --bg-surface: #141B22;
+  --bg-elevated: #1A232C;
+  --bg-overlay: rgba(11, 14, 17, 0.85);
+  --bg-gridline: #182028;
+
+  /* Legacy variable mapping for compatibility */
+  --background: #0B0E11;
+  --foreground: #F1F5F9;
+  --panel-bg: #11161B;
+  --panel-border: #243240;
+  --charcoal-bg: #0B0E11;
+  --charcoal-surface: #141B22;
+  --charcoal-border: #1C2630;
+
+  /* 2. BORDERS & DIVIDERS */
+  --border-subtle: #1C2630;
+  --border-default: #243240;
+  --border-strong: #334455;
+  --border-focus: #00B4D8;
+
+  /* 3. TEXT & TYPOGRAPHY FOREGROUNDS */
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-disabled: #475569;
+
+  /* 4. SIGNAL-ACCURATE STATUS PALETTE (Railway Interlocking Standard) */
+  --signal-green: #10B981;
+  --signal-green-dark: #059669;
+  --signal-green-bg: rgba(16, 185, 129, 0.12);
+  --signal-green-border: rgba(16, 185, 129, 0.40);
+
+  --signal-amber: #F59E0B;
+  --signal-amber-dark: #D97706;
+  --signal-amber-bg: rgba(245, 158, 11, 0.12);
+  --signal-amber-border: rgba(245, 158, 11, 0.40);
+
+  --signal-yellow: #EAB308;
+  --signal-yellow-dark: #CA8A04;
+  --signal-yellow-bg: rgba(234, 179, 8, 0.12);
+  --signal-yellow-border: rgba(234, 179, 8, 0.40);
+
+  --signal-red: #EF4444;
+  --signal-red-dark: #DC2626;
+  --signal-red-bg: rgba(239, 68, 68, 0.15);
+  --signal-red-border: rgba(239, 68, 68, 0.50);
+
+  --signal-purple: #8B5CF6;
+  --signal-purple-dark: #7C3AED;
+  --signal-purple-bg: rgba(139, 92, 246, 0.12);
+  --signal-purple-border: rgba(139, 92, 246, 0.40);
+
+  /* 5. EXCLUSIVE AI-OPTIMIZATION ACCENT (Cyan #00B4D8) */
+  --ai-accent: #00B4D8;
+  --ai-accent-bright: #48CAE4;
+  --ai-accent-dark: #0077B6;
+  --ai-accent-deep: #03045E;
+  --ai-accent-bg: rgba(0, 180, 216, 0.10);
+  --ai-accent-border: rgba(0, 180, 216, 0.40);
+  --ai-glow: 0 0 12px rgba(0, 180, 216, 0.55);
+
+  /* 6. SPACING GRID (4px / 8px Modular Scale) */
+  --space-0-5: 2px;
+  --space-1: 4px;
+  --space-1-5: 6px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* 7. CRISP BORDER RADII */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+}
+
+@theme inline {
+  --color-background: var(--bg-base);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   SCADA / CTC TYPOGRAPHY UTILITIES
+   ========================================================================== */
+
+/* Telemetry & Kinematics Numbers (Speeds, Headways, Timestamps, Distances) */
+.font-data {
+  font-family: var(--font-jetbrains-mono), monospace !important;
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+/* UI Headers, Field Labels, Station Names */
+.font-ui {
+  font-family: var(--font-inter), sans-serif !important;
+}
+
+/* High-Contrast SCADA KPI / Metric Display */
+.text-scada-kpi {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-feature-settings: "tnum" 1;
+}
+
+/* SCADA Section / Column Header Label */
+.text-scada-label {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 9px;
+  line-height: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+/* Compact Table & Telemetry Reading */
+.text-scada-data {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  line-height: 15px;
+  font-feature-settings: "tnum" 1;
+}
+
+/* High-Density Status Badge */
+.text-scada-badge {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 8.5px;
+  line-height: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   SIGNAL & AI STATUS GLOW UTILITIES
+   ========================================================================== */
+
+.text-ai-cyan {
+  color: var(--ai-accent) !important;
+}
+
+.border-ai-cyan {
+  border-color: var(--ai-accent-border) !important;
+}
+
+.bg-ai-cyan-subtle {
+  background-color: var(--ai-accent-bg) !important;
+}
+
+.glow-ai {
+  box-shadow: 0 0 12px rgba(0, 180, 216, 0.45);
+}
+
+.glow-signal-green {
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.45);
+}
+
+.glow-signal-red {
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.55);
+}
+
+.glow-signal-amber {
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.45);
+}
+
+/* Precision Industrial Scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-xs);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
